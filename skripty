@@ -1,0 +1,44 @@
+01 suma srazek = 
+SUM(data[srazky])
+
+
+
+02 suma srazek mesic 6 = 
+-- Respektujeme filtr roku a nastavujeme filtr na mesic
+
+SUMX(
+        -- krok3: Funkce FILTER() vraci tabulku
+    FILTER(
+    -- krok1: Funkce FILTER() prebira tabulku data filtrovanou vizualem
+    data,
+    -- krok2: Funkce FILTER() aplikuje filtr na sloupec mesic
+    data[mesic] = 6),
+-- krok4: Funkce SUMX() scita sloupec srazky tabulky vracene funkci FILTER()
+    data[srazky])
+    
+    
+    
+ 03 suma srazek vsechny roky = 
+-- rusim filtr vizualu
+
+SUMX(
+    --krok1: Funkce ALL() vytvari kopii tabulky data zbavene vsech filtru
+    ALL(data),
+-- krok2: Funkce SUMX() scita sloupec srazky tabulky vracene funkci ALL()
+data[srazky])
+
+
+
+
+
+04 suma srazek rok 2000 = 
+-- Na kazdem jednom radku chci sumu srazek za rok 2000,
+-- tj. rusim filtr vizualu a nastavuji si dalsi
+SUMX(
+    --krok2: Funkce FILTER() nastavuje filtr na sloupec rok tabulky vracene funkci ALL()
+    FILTER(
+    --krok1: Funkce ALL() vraci kopii tabulky data zbavene vsech filtru
+        ALL(data),
+    data[rok] = 2000),
+--krok3: Funkce SUMX() scita sloupec srazky tabulky vracene funkci FILTER()
+data[srazky])
