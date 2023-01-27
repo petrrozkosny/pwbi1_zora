@@ -88,3 +88,16 @@ data[srazky])
 
 
 _____________________________
+
+
+25 formatovani max srazky = 
+IF(
+-- maximalni srazky v danem roce a lokalite
+max(data[srazky]) =
+
+-- maximalni srazky ve vsech letech a v dane lokalite
+MAXX(FILTER(ALL(data),data[lokalita] = SELECTEDVALUE(data[lokalita])),data[srazky]),
+"#f08080")
+
+
+________________________________________________
