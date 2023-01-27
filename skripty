@@ -101,3 +101,13 @@ MAXX(FILTER(ALL(data),data[lokalita] = SELECTEDVALUE(data[lokalita])),data[srazk
 
 
 ________________________________________________
+
+27 maximalni srazky v dane lokalite v predchozim roce = 
+
+MAXX(
+    FILTER(
+        all(
+        data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])&&
+    data[rok] = SELECTEDVALUE(data[rok]) - 1),
+data[srazky])
